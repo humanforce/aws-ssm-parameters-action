@@ -36,18 +36,23 @@ const configureInputs = () => {
 }
 
 const formatParameterName = (name, { splitEnv, upperCase, envPrefix }) => {
-  let formatedName = name;
+  let formattedName = name;
   if (splitEnv) {
-    const splited = name.split('/');
-    formatedName = splited[splited.length-1];
+    const splitted = name.split('/');
+    formattedName = splitted[splitted.length-1];
+  } else {
+    if (formattedName.startsWith('/')) {
+      formattedName = formattedName.substring(1);
+    }
+    formattedName = formattedName.replace(/\//g, '_');
   }
   if (upperCase) {
-    formatedName = formatedName.toUpperCase();
+    formattedName = formattedName.toUpperCase();
   }
   if (envPrefix) {
-    formatedName = `${envPrefix}${formatedName}`;
+    formattedName = `${envPrefix}${formattedName}`;
   }
-  return formatedName;
+  return formattedName;
 }
 
 const getParameter = async ({

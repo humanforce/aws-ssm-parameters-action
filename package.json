@@ -16,6 +16,6 @@
     "build": "^0.1.4"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.33.1"
+    "@vercel/ncc": "^0.33.4"
   }
 }
